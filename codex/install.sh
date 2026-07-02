@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #
-# One-click installer: claude-workflow-kit (`flow`) for OpenAI Codex CLI.
+# One-click installer: flow-kit (`flow`) for OpenAI Codex CLI.
 #
-#   curl -fsSL https://raw.githubusercontent.com/Lemonaderrrrr/claude-workflow-kit/main/codex/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/Lemonaderrrrr/flow-kit/main/codex/install.sh | bash
 #
 # Installs the 7 workflow skills into Codex's skill directory and adds the
 # global conventions to Codex's AGENTS.md. Safe to re-run (idempotent).
 #
 set -euo pipefail
 
-REPO="${FLOW_REPO:-Lemonaderrrrr/claude-workflow-kit}"
+REPO="${FLOW_REPO:-Lemonaderrrrr/flow-kit}"
 BRANCH="${FLOW_BRANCH:-main}"
 RAW="https://raw.githubusercontent.com/${REPO}/${BRANCH}"
 
@@ -49,8 +49,8 @@ done
 say "    ${ok}/${#SKILLS[@]} skills installed."
 
 # --- global conventions -> Codex AGENTS.md (idempotent, marker-guarded) --------
-START="<!-- >>> claude-workflow-kit (flow) — global conventions >>> -->"
-END="<!-- <<< claude-workflow-kit (flow) <<< -->"
+START="<!-- >>> flow-kit (flow) — global conventions >>> -->"
+END="<!-- <<< flow-kit (flow) <<< -->"
 
 say "==> Adding global conventions to ${AGENTS_MD}"
 mkdir -p "${CODEX_HOME}"
