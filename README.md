@@ -42,6 +42,19 @@ Then invoke any workflow, e.g. `/flow:learn transformers`, or just say
 *"I want to learn X"* / *"draft me an email"* / *"which of these two should I pick?"* —
 the skills trigger on natural language too.
 
+### Using it with OpenAI Codex CLI
+
+The plugin/marketplace mechanism is Claude-Code-specific, but the skills use the
+same `SKILL.md` format Codex understands. One-click install into Codex:
+
+```
+curl -fsSL https://raw.githubusercontent.com/Lemonaderrrrr/claude-workflow-kit/main/codex/install.sh | bash
+```
+
+This drops the 7 skills into `~/.agents/skills/flow-*/` and adds the global
+conventions to `~/.codex/AGENTS.md` (idempotent, safe to re-run). In Codex, run
+`/skills` to pick one, or mention e.g. `$flow-learn`. See [`codex/`](./codex).
+
 ## One more step (recommended)
 
 The skills work on their own, but the system is best with three **global
