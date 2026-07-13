@@ -7,7 +7,8 @@
 
 **Stop Claude from winging it.** `flow-kit` routes every task through two thinking
 modes — 🧠 *Philosopher* (absorb) and ⚙️ *Engineer* (ship) — *before* work starts,
-then runs it through one of **7 purpose-built workflow skills**.
+then runs it through one of **8 purpose-built workflow skills** — including a parallel
+dev-team orchestrator (Planner + Frontend/Backend engineers + Reviewer).
 
 Works in **Claude Code** and **OpenAI Codex CLI** — it's all just files in a repo,
 so it also works on the web.
@@ -23,6 +24,21 @@ so it also works on the web.
 | **Plan** — goal → executable plan | `/flow:plan` | ⚙️ Engineer | `outputs/plans/` |
 | **Analyze** — data / options → decision (decision / data) | `/flow:analyze` | ⚙️ Engineer | `outputs/analysis/` |
 | 🔁 **Loop** — closed-loop delivery engine (orchestrates the others) | `/flow:loop` | ⚙️ Engineer | `outputs/loop/` |
+| 👥 **Team** — parallel dev team (Planner + FE/BE engineers + Reviewer) | `/flow:team` | ⚙️ Engineer | `BOARD.md` in repo |
+
+### Parallel dev team (`/flow:team`)
+
+Run a project the way a small company does. **Planner** (you as tech-lead) decomposes the
+spec into a task board and dispatches **Frontend** and **Backend** engineers *in parallel*
+by directory ownership; a **Reviewer** hard-gates every ticket (nothing is Done without a
+PASS; failures loop back with located findings). Separation of duties keeps parallel work
+from colliding: only the Planner writes the board, only the owning engineer writes its
+code, and the Reviewer only inspects. Shared contracts are frozen — changing one is an
+interface change the Planner arbitrates. See [`skills/team/HANDBOOK.md`](./skills/team/HANDBOOK.md)
+for the full contract and [`agents/`](./agents) for the role configs.
+
+> `/flow:team` is **Claude-Code-only** — it orchestrates plugin subagents. The other 7
+> skills also run in Codex (below).
 
 ### Two thinking modes
 
@@ -89,10 +105,13 @@ Every skill is a plain `SKILL.md` under [`skills/`](./skills). Fork and edit:
 ```
 .claude-plugin/
   marketplace.json   # marketplace entry
-  plugin.json        # plugin manifest (name: flow, v1.4.0)
+  plugin.json        # plugin manifest (name: flow, v1.5.0)
 skills/
   learn/ write/ research/ build/ plan/ analyze/ loop/   # one SKILL.md each
+  team/              # /flow:team — Planner manual + HANDBOOK + BOARD template
+agents/              # dev-team subagents: engineer-frontend, engineer-backend, reviewer
 CONVENTIONS.md       # the global-conventions block to paste into CLAUDE.md
+codex/               # one-click Codex installer for the 7 portable skills
 README.md
 LICENSE
 ```
