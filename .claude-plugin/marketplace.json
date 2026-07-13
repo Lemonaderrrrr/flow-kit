@@ -7,9 +7,9 @@
     {
       "name": "flow",
       "source": "./",
-      "description": "Six workflows plus a closed-loop delivery engine x two thinking modes, plus global conventions (live-search, mode routing).",
+      "description": "Six workflows + a closed-loop delivery engine + a parallel dev-team orchestrator (Planner/Frontend/Backend/Reviewer) x two thinking modes, plus global conventions (live-search, mode routing).",
       "category": "productivity",
-      "keywords": ["workflow", "learning", "writing", "research"],
+      "keywords": ["workflow", "learning", "writing", "research", "multi-agent"],
       "license": "MIT"
     }
   ]
